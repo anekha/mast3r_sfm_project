@@ -1,7 +1,4 @@
-[submodule "submodules/mast3r"]
-	path = submodules/mast3r
-	url = git@github.com:naver/mast3r.git
-	branch = mast3r_sfm
 [submodule "mast3r"]
 	path = mast3r
-	url = https://github.com/anekha/mast3r.git
+	url = git@github.com:naver/mast3r.git
+	branch = mast3r_sfm
