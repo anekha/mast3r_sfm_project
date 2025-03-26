@@ -1,0 +1,30 @@
+# Ignore .idea folder (for JetBrains IDEs like PyCharm, WebStorm, etc.)
+.idea/
+
+# Ignore data directory (to avoid uploading large data files)
+data/
+
+# Ignore checkpoints (for ML models, etc.)
+checkpoints/
+
+# Ignore modal_output directory (if you're using Modal for computations)
+modal_output/
+
+# Ignore Python bytecode files
+__pycache__/
+
+# Ignore environment files (virtualenv, conda)
+.env/
+.venv/
+env/
+venv/
+
+# Ignore log files
+*.log
+
+# Ignore Jupyter notebook checkpoints
+.ipynb_checkpoints/
+
+# Ignore system-specific files
+.DS_Store
+Thumbs.db
