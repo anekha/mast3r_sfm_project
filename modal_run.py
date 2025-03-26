@@ -9,11 +9,8 @@ import modal
 # Reference your volume
 mast3r_projectvolume = modal.Volume.from_name("mast3rsfmvolume")
 
-# Create a Modal Secret for Hugging Face token
-from modal import Secret
-
 # Replace 'YOUR_HF_TOKEN' with your actual Hugging Face token
-huggingface_secret = Secret.from_dict({"HUGGINGFACE_TOKEN": "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"})
+huggingface_secret = Secret.from_name("my-huggingface-secret")
 
 # ::::::: Image :::::::
 cuda_version = "12.1.1"  # Adjust to the correct version
@@ -101,7 +98,12 @@ mast3r_image = (
 app = modal.App("mast3r_app")
 
 # ::::::: Main Function :::::::
-@app.function(volumes={"/my_vol_mast3r": mast3r_projectvolume}, gpu="A10G", timeout=86400, image=mast3r_image)
+@app.function(volumes={"/my_vol_mast3r": mast3r_projectvolume},
+              gpu="A10G",
+              timeout=86400,
+              secrets=[huggingface_secret],
+              image=mast3r_image)
+
 def main_function(
     image_folder="/my_vol_mast3r/mast3r_sfm/data/ring_one_40frames/images",
     model_checkpoint="/my_vol_mast3r/mast3r_sfm/checkpoints/MASt3R_ViTLarge_BaseDecoder_512_catmlpdpt_metric.pth",
